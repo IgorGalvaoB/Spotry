@@ -1,9 +1,11 @@
 import './App.css';
-import { Logo } from './components/Logo/Logo';
+import { Navbar } from './components/Navbar/Navbar'
 
 function App() {
   return (
-    <div className="App"></div>
+    <div className="App">
+      <Navbar />
+    </div>
   );
 }
 
