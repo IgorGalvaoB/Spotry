@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Musica 1",
+    "author": "José da Silva",
+    "musicID": 1234
+  },
+  {
+    "name": "Musica 2",
+    "author": "Pedro Souza",
+    "musicID": 4456
+  },
+  {
+    "name": "Musica 3",
+    "author": "Arlindo dos Santos",
+    "musicID": 8765
+  }
+]

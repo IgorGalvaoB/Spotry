@@ -10,14 +10,16 @@ export const Navbar = () => {
     <header className="header">
       <div className="headerContainer">
         <div className="headerContainer__a">
-          <Logo />
+          <a href="/">
+            <Logo />
+          </a>
           <ButtonPlaylist />
         </div>
         <Search />
-      <div className="headerContainer__b">
-        <MyAccount />
-        <Logoff />
-      </div>
+        <div className="headerContainer__b">
+          <MyAccount />
+          <Logoff />
+        </div>
       </div>
     </header>
   );
