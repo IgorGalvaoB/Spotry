@@ -1,3 +1,4 @@
+import './Logo.css'
 import logo from './logo-spotry.svg'
 
 export const Logo = () => {
@@ -11,3 +12,4 @@ export const Logo = () => {
     );
 
 }
+
