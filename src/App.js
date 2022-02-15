@@ -4,6 +4,9 @@ import { MusicList } from './components/MusicList/MusicList';
 import MusicsData from './musics.json'
 import { Route, Routes } from 'react-router-dom';
 import { MusicDetails } from './components/MusicDetails/MusicDetails';
+import { Album } from './components/Cards/Album';
+import { Artist } from './components/Cards/Artist';
+import { Music } from './components/Cards/Music';
 
 
 function App() {
@@ -11,11 +14,16 @@ function App() {
     <div className="App">
       <Navbar />
       <div>
-      <MusicList musics={MusicsData} />
+      {/* <MusicList musics={MusicsData} /> */}
       </div>
-      <Routes>
+      {/* <Routes>
         <Route path='/:id' element = {<MusicDetails musics={MusicsData} />} />
-      </Routes>
+      </Routes> */}
+
+      <Album />
+      <Artist />
+      <Music />
+
     </div>
   );
 }
