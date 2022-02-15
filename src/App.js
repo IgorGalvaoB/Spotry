@@ -14,7 +14,7 @@ function App() {
       <MusicList musics={MusicsData} />
       </div>
       <Routes>
-        <Route path='/:id' element = { <MusicDetails musics={MusicsData}/> } />
+        <Route path='/:id' element = {<MusicDetails musics={MusicsData} />} />
       </Routes>
     </div>
   );

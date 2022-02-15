@@ -4,7 +4,7 @@ export const Search = () => {
 
     return (
 
-        <input className='inputSearch' type="text" placeholder="Buscar Artistas ou Música"/>
+        <input className='inputSearch' type="text" placeholder="Buscar Artistas ou Música" />
 
     );
 
