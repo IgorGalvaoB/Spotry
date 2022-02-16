@@ -14,9 +14,10 @@ const params = new Proxy(new URLSearchParams(window.location.search), {
   get: (searchParams, prop) => searchParams.get(prop),
 });
 
-const access_token = params.access_token;
 localStorage.setItem('refresh_token_spotry',params.refresh_token)
-
+localStorage.setItem('access_token_spotry',params.access_token)
+localStorage.setItem('teste',2)
+//localStorage.getItem('refresh_token_spotry')
 function App() {
   return (
     <div className="App">
@@ -31,8 +32,9 @@ function App() {
       <Album />
       <Artist />
       <Music />
-      <p>{access_token}</p>
       <p>{localStorage.getItem('refresh_token_spotry')}</p>
+      <p>{localStorage.getItem('access_token_spotry')}</p>
+      <p>{localStorage.getItem('teste')*3}</p>
     </div>
   );
 }
