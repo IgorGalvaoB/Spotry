@@ -7,7 +7,7 @@ import { MusicDetails } from './components/MusicDetails/MusicDetails';
 import { Album } from './components/Cards/Album';
 import { Artist } from './components/Cards/Artist';
 import { Music } from './components/Cards/Music';
-import APIRendler from './Classes/apiRendler';
+
 
 
 const params = new Proxy(new URLSearchParams(window.location.search), {
@@ -16,8 +16,7 @@ const params = new Proxy(new URLSearchParams(window.location.search), {
 localStorage.setItem('refresh_token_spotry',params.refresh_token)
 localStorage.setItem('access_token_spotry',params.access_token)
 //localStorage.getItem('refresh_token_spotry')
-const teste = new APIRendler
-const name = teste.searchArtist(1,0,'0TnOYISbd1XYRBk9myaseg',console.log).name
+
 function App() {
   return (
     <div className="App">
@@ -32,7 +31,7 @@ function App() {
       <Album />
       <Artist />
       <Music />
-      <p>{name}</p>
+    
     </div>
   );
 }
