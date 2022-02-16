@@ -14,7 +14,8 @@ const params = new Proxy(new URLSearchParams(window.location.search), {
   get: (searchParams, prop) => searchParams.get(prop),
 });
 
-let access_token = params.access_token;
+const access_token = params.access_token;
+const refresh_token = params.refresh_token;
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
       <Artist />
       <Music />
       <p>{access_token}</p>
+      <p>{refresh_token}</p>
     </div>
   );
 }
