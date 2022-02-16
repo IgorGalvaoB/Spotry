@@ -1,8 +1,8 @@
 const axios = require('axios');
-class CRUDFunctions {
-    constructor(access_token,refresh_token){
-        this.access_token = access_token;
-        this.refresh_token = refresh_token;
+class APIRendler {
+    constructor(){
+        this.access_token = localStorage.getItem('access_token_spotry');
+        this.refresh_token = localStorage.getItem('refresh_token_spotry');
         this.url = 'https://api.spotify.com/v1';
     } 
 
@@ -52,7 +52,7 @@ class CRUDFunctions {
                     'Content-Type': 'application/json',
                 },
             }).then(response => {
-                callback(response.data)
+                return response.data
             }).catch(error => {
                 if(error.response.data.error.message === "The access token expired"){
                     this.searchArtist(limit,offset,id,callback,this.refreshToken())
@@ -85,6 +85,7 @@ class CRUDFunctions {
                 },
             }).then(response => {
                 this.access_token = response.data.access_token
+                localStorage.setItem('access_token_spotry',this.access_token)
             }).catch(error=>{console.log(error)})
 
     }
@@ -92,3 +93,4 @@ class CRUDFunctions {
 
 
 
+export default APIRendler
