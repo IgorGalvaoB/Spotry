@@ -8,6 +8,9 @@ import { Album } from './components/Cards/Album';
 import { Artist } from './components/Cards/Artist';
 import { Music } from './components/Cards/Music';
 
+const urlParams = new URLSearchParams(window.location.search);
+const access_token = urlParams.get('access_token');
+const refresh_token = urlParams.get('refresh_token');
 
 function App() {
   return (
@@ -23,7 +26,7 @@ function App() {
       <Album />
       <Artist />
       <Music />
-
+      <p>{refresh_token}</p>
     </div>
   );
 }
