@@ -5,6 +5,7 @@ class CRUDFunctions {
         this.refresh_token = refresh_token;
         this.url = 'https://api.spotify.com/v1';
     } 
+
     
     search(q,limit,offset,type,callback){
         axios.get(
