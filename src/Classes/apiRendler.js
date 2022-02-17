@@ -6,22 +6,29 @@ class APIRendler {
         this.url = 'https://api.spotify.com/v1';
     } 
 
-    
-    search(q,limit,offset,type,callback){
-        axios.get(
-            `${this.url}/search?&type=${type}&include_external=audio`, {
-                params: { q: q , limit: limit, offset: offset },
-                headers: {
-                    Accept: 'application/json',
-                    Authorization: 'Bearer ' + this.access_token,
-                    'Content-Type': 'application/json',
-                },
-            }).then(response => callback(response.data)
-            ).catch(error => {
-                if(error.response.data.error.message === "The access token expired"){
-                    this.search(q,limit,offset,type,callback,this.refreshToken())
-                }
-            })
+   
+    async search(q,limit,offset,type,callback){
+        try {
+            const b = await axios.get(
+                `${this.url}/search?&type=${type}&include_external=audio`, {
+                    params: { q: q , limit: limit, offset: offset },
+                    headers: {
+                        Accept: 'application/json',
+                        Authorization: 'Bearer ' + this.access_token,
+                        'Content-Type': 'application/json',
+                    },
+                })
+            const c = await b.data.artists.items
+            console.log(c)
+            
+        } catch (error) {
+            if(error.response.data.error.message === "The access token expired"){
+                this.refreshToken()
+                this.search(q,limit,offset,type,callback)
+            }else{
+                throw Error ('Its a invalid token')
+            }
+        }
     }
 
     searchAlbum(limit,offset,id,callback){
