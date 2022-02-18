@@ -1,5 +1,6 @@
 import './Logo.css'
 import logo from './logo-spotry.svg'
+import logoGreen from './logo-green.svg';
 import { Link } from 'react-router-dom'
 export const Logo = () => {
 
@@ -12,6 +13,18 @@ export const Logo = () => {
         </>
 
     );
+
+}
+
+export const LogoGreen = () => {
+
+    return (
+
+        <>
+            <img src={logoGreen} className='logo-green' alt="Logotipo verde" />
+        </>
+
+    )
 
 }
 

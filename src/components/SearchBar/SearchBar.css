@@ -4,10 +4,31 @@
     width: 30%;
     padding: 4px;
 }
+
+.inputFormSearch {
+    background-color: rgba(36, 36, 36, 1);
+    background-size: cover;
+    background-position: left;
+    background-attachment: fixed; 
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
 .inputSearchMain {
+    background-color: #414141;
     border: none;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    color: #fff;
     width: 70%;
     padding: 4px;
     height: 30px;
+}
+
+
+.inputSearchMain::placeholder {
+    color: #fff;
+    font-size: 12px;
 }
