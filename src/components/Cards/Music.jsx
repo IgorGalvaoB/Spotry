@@ -1,14 +1,14 @@
-export const Music = ({ name, image,id }) => {
+export const Music = ({ name, image, id ,artists  }) => {
+  const arts = artists || []
+  const nameArtists = arts.map(artist=>artist.name).join(', ')
   return (
     <div className="music">
       <img
         src = {image}
         alt="album image"
-
-        width="150px"
       />
-      <h3>Music Name</h3>
-      <p>{name}</p>
+      <h4>{name}</h4>
+      <h6>{nameArtists}</h6>
     </div>
   );
 };

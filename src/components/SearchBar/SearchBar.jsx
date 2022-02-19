@@ -18,11 +18,11 @@ export const SearchBar = () => {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
             />
-            <Link to={{
+            {search&&<Link to={{
                 pathname: `/search/?q=${search}`
             }}>
                 <button style={{ display: 'none' }} onClick={() => setSearch('')}></button>
-            </Link>
+            </Link>}
         </form>
 
     );
@@ -43,11 +43,11 @@ export const SearchBarMain = () => {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
             />
-            <Link to={{
+            {search&&<Link to={{
                 pathname: `/search/?q=${search}`
             }}>
                 <button style={{ display: 'none' }} onClick={() => setSearch('')}></button>
-            </Link>
+            </Link>}
         </form>
 
     );
