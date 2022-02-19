@@ -1,11 +1,12 @@
 import { Link, useSearchParams } from "react-router-dom";
+import './Search.css'
+import { useSearchParams } from "react-router-dom";
 import { Navbar } from "../components/Navbar/Navbar";
 import { useEffect, useState } from "react";
 import APIRendler from "../Classes/apiRendler";
 import { Music } from "../components/Cards/Music";
 import { Artist } from "../components/Cards/Artist";
 import { Album } from "../components/Cards/Album";
-import './Search.css'
 const Search = () => {
 
     const [searchParams, setSearchParams] = useSearchParams()
@@ -27,7 +28,7 @@ const Search = () => {
 
                 setArtists(response.artists.items.slice(0, 8).map(artist => <Artist name={artist.name} key={artist.id} image={artist.images[1].url} />))
 
-                
+
                 setAlbums(response.albums.items.slice(0, 8).map(album => <Album name={album.name} key={album.id} image={album.images[1].url} />))
 
             })
@@ -47,6 +48,8 @@ const Search = () => {
     }, [find, type])
 
     return (
+
+
         <>
             <Navbar />
             <div>
@@ -56,7 +59,6 @@ const Search = () => {
                     </Link>
                     {tracks}
                 </div>
-
                 <div>
                     <Link to={`/search/?type=artist&q=${find}`}>
                         <p>Artists</p>
@@ -65,7 +67,6 @@ const Search = () => {
                         {artists}
                     </div>
                 </div>
-
                 <div>
                     <Link to={`/search/?type=album&q=${find}`}>
                         <p>Albums</p>
@@ -76,7 +77,6 @@ const Search = () => {
                 </div>
 
             </div>
-        </>
-    )
+        </>)
 }
-export default Search
+

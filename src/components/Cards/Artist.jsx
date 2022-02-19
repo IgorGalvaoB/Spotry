@@ -1,7 +1,11 @@
+import './Cards.css'
+
+
+  
+  
+
 
 export const Artist = ({ image, name, key}) => {
-  
-  
   return (
     <div className="artist">
       <img

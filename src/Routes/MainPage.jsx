@@ -15,6 +15,7 @@ const MainPage = ()=>{
             <Navbar/>
             <div >
                 <SearchBarMain/>
+
             </div>
         </>
     )
