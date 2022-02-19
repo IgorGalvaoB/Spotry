@@ -6,7 +6,7 @@
 }
 
 .inputFormSearch {
-    background-color: rgba(36, 36, 36, 1);
+    background-image: url('../../images/banner-bg.png');
     background-size: cover;
     background-position: left;
     background-attachment: fixed; 
