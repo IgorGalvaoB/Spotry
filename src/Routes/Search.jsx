@@ -18,7 +18,6 @@ const Search = () => {
     const [albums, setAlbums] = useState('');
 
 
-
     useEffect(() => {
         const teste = new APIRendler()
         if (!type) {
@@ -65,6 +64,7 @@ const Search = () => {
                         {artists}
                     </div>
                 </div>
+
                 <div>
                     <Link to={`/search/?type=album&q=${find}`}>
                         <p>Albums</p>
@@ -73,6 +73,7 @@ const Search = () => {
                         {albums}
                     </div>
                 </div>
+
             </div>
         </>
     )
