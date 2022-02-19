@@ -1,3 +1,11 @@
+/* .container-artists {
+    display: flex;
+    flex-direction: row;
+  }
+  .container-albums{
+    display: flex;
+    flex-direction: row;
+  } */
 body {
     background-color: #101010;
 }
