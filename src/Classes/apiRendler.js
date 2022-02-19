@@ -7,24 +7,23 @@ class APIRendler {
     } 
 
    
-    async search(q,limit,offset,type,callback){
+    async search(qString,limit,offset,type,callback){
         try {
-            const b = await axios.get(
+            const { data } = await axios.get(
                 `${this.url}/search?&type=${type}&include_external=audio`, {
-                    params: { q: q , limit: limit, offset: offset },
+                    params: { q: qString , limit: limit, offset: offset },
                     headers: {
                         Accept: 'application/json',
                         Authorization: 'Bearer ' + this.access_token,
                         'Content-Type': 'application/json',
                     },
                 })
-            const c = await b.data.artists.items
-            console.log(c)
+            return data
             
         } catch (error) {
             if(error.response.data.error.message === "The access token expired"){
                 this.refreshToken()
-                this.search(q,limit,offset,type,callback)
+                this.search(qString,limit,offset,type,callback)
             }else{
                 throw Error ('Its a invalid token')
             }
