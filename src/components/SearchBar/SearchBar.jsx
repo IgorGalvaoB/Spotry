@@ -35,7 +35,7 @@ export const SearchBarMain = () => {
     }
     const [search,setSearch] = useState('')
     return (
-        <form onSubmit={handleSubmit}>            
+        <form className='inputFormSearch' onSubmit={handleSubmit}>            
             <input 
                 className='inputSearchMain' 
                 type="input"
