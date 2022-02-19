@@ -1,6 +1,5 @@
 import { Link, useSearchParams } from "react-router-dom";
 import './Search.css'
-import { useSearchParams } from "react-router-dom";
 import { Navbar } from "../components/Navbar/Navbar";
 import { useEffect, useState } from "react";
 import APIRendler from "../Classes/apiRendler";
@@ -13,6 +12,7 @@ const Search = () => {
     const find = searchParams.get('q')
 
     const type = searchParams.get('type')
+    
     console.log(type)
     const [tracks, setTracks] = useState('');
     const [artists, setArtists] = useState('');
@@ -48,11 +48,9 @@ const Search = () => {
     }, [find, type])
 
     return (
-
-
         <>
             <Navbar />
-            <div>
+            <div className ='container-all'>
                 <div className="container-tracks">
                     <Link to={`/search/?type=track&q=${find}`}>
                         <p>Tracks</p>
@@ -79,4 +77,5 @@ const Search = () => {
             </div>
         </>)
 }
+export default Search
 
