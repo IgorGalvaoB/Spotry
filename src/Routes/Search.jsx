@@ -27,6 +27,7 @@ const Search = () => {
 
                 setArtists(response.artists.items.slice(0, 8).map(artist => <Artist name={artist.name} key={artist.id} image={artist.images[1].url} />))
 
+                
                 setAlbums(response.albums.items.slice(0, 8).map(album => <Album name={album.name} key={album.id} image={album.images[1].url} />))
 
             })
