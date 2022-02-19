@@ -12,7 +12,7 @@ export const SearchBar = () => {
     return (
         <form onSubmit={handleSubmit}>
             <input
-                className='inputSearch'
+                className='inputSearch  '
                 type="input"
                 placeholder="Search for music, artists or tracks..."
                 value={search}

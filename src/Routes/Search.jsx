@@ -1,3 +1,4 @@
+import './Search.css'
 import { useSearchParams } from "react-router-dom";
 import { Navbar } from "../components/Navbar/Navbar";
 import { useEffect, useState } from "react";
@@ -21,12 +22,12 @@ const Search = ()=>{
     console.log(localStorage.getItem('refresh_token_spotry'))
 
     return(
-        <>
+        <section className='search'>
             <Navbar/>
             <div> 
-                <Music /> 
+                <Music />
             </div>
-        </>
+        </section>
     )
 }
 export default Search

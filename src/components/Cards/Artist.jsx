@@ -1,3 +1,6 @@
+import './Cards.css'
+
+
 export const Artist = () => {
   return (
     <div className="artist">
