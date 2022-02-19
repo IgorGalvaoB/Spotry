@@ -1,4 +1,4 @@
-import { NavbarMain } from "../components/Navbar/Navbar"
+import { Navbar } from "../components/Navbar/Navbar";
 import { SearchBarMain } from "../components/SearchBar/SearchBar"
 
 
@@ -12,7 +12,7 @@ localStorage.setItem('access_token_spotry',params.access_token)
 const MainPage = ()=>{
     return(
         <>
-            <NavbarMain/>
+            <Navbar/>
             <div >
                 <SearchBarMain/>
             </div>
