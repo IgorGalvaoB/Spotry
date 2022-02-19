@@ -6,6 +6,7 @@ import APIRendler from "../Classes/apiRendler";
 import { Music } from "../components/Cards/Music";
 import { Artist } from "../components/Cards/Artist";
 import { Album } from "../components/Cards/Album";
+
 const Search = () => {
 
     const [searchParams, setSearchParams] = useSearchParams()
@@ -64,25 +65,25 @@ const Search = () => {
             <Navbar />
             <div className ='container-all'>
                 {(conditionRendlerAll||conditionRendlerTracks)&&<div className="container-tracks">
-                    <Link to={`/search/?type=track&q=${find}`}>
+                    {!type?<Link to={`/search/?type=track&q=${find}`}>
                         <p>Tracks</p>
-                    </Link>
+                    </Link>:<p>Tracks</p>}
                     {tracks}
                 </div>}
                 
                 {(conditionRendlerAll||conditionRendlerArtists)&&<div>
-                    <Link to={`/search/?type=artist&q=${find}`}>
+                    {!type?<Link to={`/search/?type=artist&q=${find}`}>
                         <p>Artists</p>
-                    </Link>
+                    </Link>:<p>Artists</p>}
                     <div className="container-artists">
                         {artists}
                     </div>
                 </div>}
 
                 {(conditionRendlerAll||conditionRendlerAlbums)&&<div>
-                    <Link to={`/search/?type=album&q=${find}`}>
+                    {!type?<Link to={`/search/?type=album&q=${find}`}>
                         <p>Albums</p>
-                    </Link>
+                    </Link>:<p>Albums</p>}
                     <div className="container-albums">
                         {albums}
                     </div>

@@ -24,4 +24,7 @@
     background-color: rgba(255, 255, 255, 0.2);
     border-radius: 10px;
 }
-
+.artist-title, .artist-title:active,.artist-title:after,.artist-title:focus {
+    font-size: 10px;
+    color: inherit;
+}
