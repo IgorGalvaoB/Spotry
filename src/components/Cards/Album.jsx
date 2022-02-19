@@ -1,4 +1,4 @@
-export const Album = ({ artists, name, key, image }) => {
+export const Album = ({ artists, name, id, image }) => {
   return (
     <div className="album">
       <img

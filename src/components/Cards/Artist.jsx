@@ -1,11 +1,8 @@
 import './Cards.css'
 
 
-  
-  
 
-
-export const Artist = ({ image, name, key}) => {
+export const Artist = ({ image, name, id}) => {
   return (
     <div className="artist">
       <img
