@@ -1,21 +1,21 @@
 //COMPONENTE QUE ORGANIZA A DEMONSTRAÇÃO DAS CARTAS DE MUSICA
 import { ArtistTitle } from './ArtistTitle'
 import './Cards.css'
-
-export const Music = ({ name, image,id, artists ,duration_ms,explicit}) => {
-  function msToTime(s) {
+import play from '../../images/play-music.svg'
+export const Music = ({ name, image,id, artists ,duration_ms,index}) => {
+  const msToTime =  (s)=> {
 
     // Pad to 2 or 3 digits, default is 2
-    function pad(n, z) {
+    const pad=(n, z)=> {
       z = z || 2;
       return ('00' + n).slice(-z);
     }
   
-    var ms = s % 1000;
+    let ms = s % 1000;
     s = (s - ms) / 1000;
-    var secs = s % 60;
+    let secs = s % 60;
     s = (s - secs) / 60;
-    var mins = s % 60;
+    let mins = s % 60;
     
   
     return pad(mins) + ':' + pad(secs);
@@ -23,6 +23,12 @@ export const Music = ({ name, image,id, artists ,duration_ms,explicit}) => {
   const time = msToTime(Number(duration_ms))
   return (
     <div className="music">
+      <div  className='music-index'>
+        <h4>{index+1}</h4>
+      </div>
+      <div className='play-music-div'>
+        <img src={play} alt="play"/>
+      </div>
       <img className='image-music'
         src = {image}
         alt="album"

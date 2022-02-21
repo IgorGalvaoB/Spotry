@@ -6,14 +6,14 @@ export const ArtistTitle = ({ artists }) => {
     let arrTitle = artists.map((artist, index, arr) => {
         if (arr.length === 1 || index === arr.length - 1) {
             return (
-                <Link style={{'text-decoration':'none',color:'inherit'}} to={{ pathname: `/artist/?id=${artist.id}` }} className='artist-title'>{/*LINK QUE LEVA PARA A PÁGINA DO ARTISTA*/}
+                <Link style={{textDecoration:'none',color:'inherit'}} to={{ pathname: `/artist/?id=${artist.id}` }} key={artist.id} className='artist-title'>{/*LINK QUE LEVA PARA A PÁGINA DO ARTISTA*/}
                     {artist.name}
                 </Link>
             )
         } else {
             return (
                 <>
-                    <Link  style={{'text-decoration':'none',color:'inherit'}}to={{ pathname: `/artist/?id=${artist.id}` }} className='artist-title'>{/*LINK QUE LEVA PARA A PÁGINA DO ARTISTA*/}
+                    <Link  style={{textDecoration:'none',color:'inherit'}}to={{ pathname: `/artist/?id=${artist.id}` }} key={artist.id}  className='artist-title'>{/*LINK QUE LEVA PARA A PÁGINA DO ARTISTA*/}
                         {artist.name}
                     </Link>
                     <span>, </span>
@@ -24,7 +24,7 @@ export const ArtistTitle = ({ artists }) => {
     })
     return (
         <span className='artist-title-link'>
-            {arrTitle}{/*VETOR RETORNO COM TODOS OS LINKS DOS ARTISTAS QUE FORAM PASSADOS POR PROPS E SEPARADOS POR VIRGULA E ESPAÇO*/}
+            <p>{arrTitle}</p>{/*VETOR RETORNO COM TODOS OS LINKS DOS ARTISTAS QUE FORAM PASSADOS POR PROPS E SEPARADOS POR VIRGULA E ESPAÇO*/}
         </span>
     )
 }
