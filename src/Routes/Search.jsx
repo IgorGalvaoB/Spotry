@@ -1,5 +1,5 @@
 import { Link, useSearchParams } from "react-router-dom";
-import './Search.css'
+import './Pages.css'
 import { Navbar } from "../components/Navbar/Navbar";
 import { useEffect, useState } from "react";
 import APIRendler from "../Classes/apiRendler";
@@ -39,15 +39,15 @@ const Search = () => {
     useEffect(() => {
         setLoading(true)
         setNot(false)
-        const teste = new APIRendler()
+        const api = new APIRendler()
         if (!type) {
-            teste.search(find, 9, 0, 'artist,track,album', console.log).then(response => {
+            api.search(find, 8, 0, 'artist,track,album', console.log).then(response => {
                 //tracks
 
                 if (response.tracks.length === 0) {
                     setTracks('')
                 } else {
-                    setTracks(response.tracks.items.slice(0, 5).map(track => <Music name={track.name} image={track.album.images[2].url} year={track.album.release_date} key={track.id} id={track.id} artists={track.artists} duration_ms={track.duration_ms} />))
+                    setTracks(response.tracks.items.slice(0, 5).map((track,index) => <Music name={track.name} image={track.album.images[2].url} year={track.album.release_date} key={track.id} id={track.id} artists={track.artists} duration_ms={track.duration_ms} index={index} />))
                 }
                  
                 //albums
@@ -73,8 +73,8 @@ const Search = () => {
 
         } else{
             if(type === 'track') {
-                teste.search(find, 50, 0, type, console.log).then(response => {
-                    setTracks(response.tracks.items.map(track => <Music name={track.name} image={track.album.images[2].url} year={track.album.release_date} key={track.id} id={track.id} artists={track.artists} duration_ms={track.duration_ms}/>))
+                api.search(find, 50, 0, type, console.log).then(response => {
+                    setTracks(response.tracks.items.map((track,index) => <Music name={track.name} image={track.album.images[2].url} year={track.album.release_date} key={track.id} id={track.id} artists={track.artists} duration_ms={track.duration_ms} index={index}/>))
                     console.log(response.tracks)
                     setLoading(false)
                     setNot(true)
@@ -82,7 +82,7 @@ const Search = () => {
                     console.log(error)
                 })
             } else if (type === 'artist') {
-                teste.search(find, 30, 0, type, console.log).then(response => {
+                api.search(find, 50, 0, type, console.log).then(response => {
                     setArtists(response.artists.items.map(artist=><Artist name={artist.name} key={artist.id} id={artist.id} image={artist.images}/>))
                     
                     setLoading(false)
@@ -92,7 +92,7 @@ const Search = () => {
         
                 })
             } else if(type ==='album'){
-                teste.search(find,30,0,type,console.log).then(response=>{
+                api.search(find,50,0,type,console.log).then(response=>{
                     console.log(response)
                     setAlbums(response.albums.items.map(album=><Album name = {album.name} key= {album.id} id={album.id} image={album.images[0].url} artists={album.artists}/>))
                     setLoading(false)
@@ -112,7 +112,7 @@ const Search = () => {
         <div className='container-all'>
             
             {(conditionRendlerAll || conditionRendlerTracks) && <div>
-                {!type ? <Link style={{'text-decoration':'none',color:'inherit'}} to={`/search/?type=track&q=${find}`}>
+                {!type ? <Link style={{textDecoration:'none',color:'inherit'}} to={`/search/?type=track&q=${find}`}>
                     {tracks.length === 0 ? null :  <h2 className="albums-tracks-artists-link">Tracks</h2>}
                 </Link> : <h2 className="albums-tracks-artists-link">Tracks</h2>}
                 <div className="container-tracks">
@@ -123,7 +123,7 @@ const Search = () => {
            
             {(conditionRendlerAll || conditionRendlerArtists) && 
             <div>
-                {!type ? <Link style={{'text-decoration':'none',color:'inherit'}} to={`/search/?type=artist&q=${find}`}>
+                {!type ? <Link style={{textDecoration:'none',color:'inherit'}} to={`/search/?type=artist&q=${find}`}>
                     {artists.length === 0 ? null : <h2 className="albums-tracks-artists-link">Artists</h2>}
                 </Link> : <h2 className="albums-tracks-artists-link">Artists</h2>}
                 <div className="container-artists">
@@ -132,7 +132,7 @@ const Search = () => {
             </div>}
 
             {(conditionRendlerAll || conditionRendlerAlbums) && <div>
-                {!type ? <Link style={{'text-decoration':'none',color:'inherit'}} to={`/search/?type=album&q=${find}`}>
+                {!type ? <Link style={{textDecoration:'none',color:'inherit'}} to={`/search/?type=album&q=${find}`}>
                     {albums.length === 0 ? null : <h2 className="albums-tracks-artists-link">Albums</h2>}
                 </Link> : <h2 className="albums-tracks-artists-link">Albums</h2>}
                 <div className="container-albums">

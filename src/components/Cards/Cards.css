@@ -1,6 +1,28 @@
 /*CSS DO MUSIC CARD---------------------------------------------*/
+.time{
+    margin-top: 19px;
+    margin-right: 20px;
+}
 .image-music{
     height:50px;
+    margin-top: 2px;
+}
+.music-index{
+    margin-top: 19px;
+    width:40px;
+    margin-left:20px;
+}
+.play-music-div{
+    margin-top: 19px;
+    margin-left:20px;
+    width:40px;
+}
+.music:not(:hover) .play-music-div{
+    display:none;
+
+}
+.play-music-div img{
+    width:16px;
 }
 
 .info-music{
@@ -18,9 +40,17 @@
     flex-direction: row;
     background-color: #121212;
     margin:0px 10px 0px 10px;
-    border-radius:7px
-
+    border-radius:7px;
+    height:55px;
+    
 }
+.music-index:hover{
+    display:none
+}
+.music:hover .music-index{
+    display:none;
+}
+
 .music h4{
     margin:0px;
     padding: 0px;
@@ -36,7 +66,7 @@
 
 /*CSS DO ARTIST -> TITLE <- ----------------------------------*/
 .artist-title-link{
-    font-size: 13px;
+    font-size: 0.8em;
     
 
 }
@@ -63,7 +93,7 @@
     width:180px;
     height: 260px;
     border-radius: 7px;
-    margin:10px
+    margin:10px;
 }
 .artist-name{
     text-overflow: ellipsis;
@@ -73,3 +103,38 @@
     margin-left: 15px;
 }
 /*CSS DO ALBUM CARD--------------------------------------------------*/
+.album img{
+  
+    border-radius: 4px;
+    width: 150px;
+    height: 150px;
+    align-self: center;
+    margin: 10px 15px 0px 15px;
+}
+.album{
+    background-color: #181818;
+    width:180px;
+    height: 260px;
+    border-radius: 7px;
+    margin:10px
+}
+.album:hover{
+    background-color: #282828;
+    border-radius: 7px; 
+}
+.album-name{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width:150px; 
+    margin-left: 15px;
+}
+.album p{
+    overflow: hidden;
+    width:160px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    margin-top: -10px;
+    margin-left:15px;
+}
