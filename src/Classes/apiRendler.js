@@ -83,7 +83,7 @@ class APIRendler {
                         'Content-Type': 'application/json',
                     }
                 })
-            return [data.images,data.name]
+            return [data.images,data.name,data.followers.total,data.popularity,data]
         }catch(error){
             if(error.response.data.error.message === "The access token expired"){
                 this.refreshToken()

@@ -22,7 +22,8 @@
 
 }
 .play-music-div img{
-    width:16px;
+    width:13px;
+    transform: rotate(90deg);
 }
 
 .info-music{
@@ -73,7 +74,6 @@
 
 /*CSS DO ARTIST CARD-------------------------------------------*/
 
-
 .artist img{
     border-radius: 50%;
     width: 150px;
@@ -81,7 +81,8 @@
     object-fit: cover;
     align-self: center;
     margin: 10px 15px 0px 15px;
-    box-shadow: rgba(19, 16, 16, 0.9)
+    box-shadow:0px 0px 12px 7px rgba(0,0,0,0.85)
+   
 }
 .artist:hover{
     background-color: #282828;

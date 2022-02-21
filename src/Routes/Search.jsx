@@ -75,7 +75,6 @@ const Search = () => {
             if(type === 'track') {
                 api.search(find, 50, 0, type, console.log).then(response => {
                     setTracks(response.tracks.items.map((track,index) => <Music name={track.name} image={track.album.images[2].url} year={track.album.release_date} key={track.id} id={track.id} artists={track.artists} duration_ms={track.duration_ms} index={index}/>))
-                    console.log(response.tracks)
                     setLoading(false)
                     setNot(true)
                 }).catch(error=>{
@@ -93,7 +92,6 @@ const Search = () => {
                 })
             } else if(type ==='album'){
                 api.search(find,50,0,type,console.log).then(response=>{
-                    console.log(response)
                     setAlbums(response.albums.items.map(album=><Album name = {album.name} key= {album.id} id={album.id} image={album.images[0].url} artists={album.artists}/>))
                     setLoading(false)
                     setNot(true)
