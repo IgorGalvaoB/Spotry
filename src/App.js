@@ -3,6 +3,8 @@ import Initial from './Routes/initialPage';
 import MainPage from './Routes/MainPage';
 import Search from './Routes/Search';
 import './App.css'
+import { Player } from './components/Player/Player';
+import ArtistPage from './Routes/ArtistPage';
 
 
 
@@ -21,7 +23,9 @@ function App() {
           <Route path='/' element = {<Initial/>}/>
           <Route path='/me' element = {<MainPage/>}/>
           <Route path='/search' element = {<Search/>}/>
+          <Route path='/artist' element = {<ArtistPage/>}/>
         </Routes>
+        {/* <Player/> */}
     </div>
   );
 }

@@ -1,6 +1,28 @@
 /*CSS DO MUSIC CARD---------------------------------------------*/
+.time{
+    margin-top: 19px;
+    margin-right: 20px;
+}
 .image-music{
     height:50px;
+    margin-top: 2px;
+}
+.music-index{
+    margin-top: 19px;
+    width:40px;
+    margin-left:20px;
+}
+.play-music-div{
+    margin-top: 19px;
+    margin-left:20px;
+    width:40px;
+}
+.music:not(:hover) .play-music-div{
+    display:none;
+
+}
+.play-music-div img{
+    width:16px;
 }
 
 .info-music{
@@ -18,9 +40,17 @@
     flex-direction: row;
     background-color: #121212;
     margin:0px 10px 0px 10px;
-    border-radius:7px
-
+    border-radius:7px;
+    height:55px;
+    
 }
+.music-index:hover{
+    display:none
+}
+.music:hover .music-index{
+    display:none;
+}
+
 .music h4{
     margin:0px;
     padding: 0px;
@@ -36,7 +66,13 @@
 
 /*CSS DO ARTIST -> TITLE <- ----------------------------------*/
 .artist-title-link{
+<<<<<<< HEAD
+    font-size: 0.8em;
+    
+
+=======
     font-size: 13px;
+>>>>>>> cde215387340c2676073931fa43b47a80aa6e4f3
 }
 
 /*CSS DO ARTIST CARD-------------------------------------------*/
@@ -60,7 +96,7 @@
     width:180px;
     height: 260px;
     border-radius: 7px;
-    margin:10px
+    margin:10px;
 }
 .artist-name{
     text-overflow: ellipsis;
@@ -70,44 +106,38 @@
     margin-left: 15px;
 }
 /*CSS DO ALBUM CARD--------------------------------------------------*/
-
-.container-albums {
-
-    padding: 10px;
-
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.album {
- 
-    padding: 20px;
-    margin: 10px 0;
-    max-width: 200px;
-    box-sizing: border-box;
-    object-fit: cover;
+.album img{
+  
+    border-radius: 4px;
+    width: 150px;
+    height: 150px;
     align-self: center;
-
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-
-    gap: 10%;
-    
+    margin: 10px 15px 0px 15px;
 }
-
-.album img {
-    object-fit: cover;
-    align-self: center;
-    width: 80%;
+.album{
+    background-color: #181818;
+    width:180px;
+    height: 260px;
+    border-radius: 7px;
+    margin:10px
 }
-
 .album:hover{
     background-color: #282828;
-    border-radius: 7px;
+    border-radius: 7px; 
 }
-
-.album h3 {
-    margin: 8px;
+.album-name{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width:150px; 
+    margin-left: 15px;
+}
+.album p{
+    overflow: hidden;
+    width:160px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    margin-top: -10px;
+    margin-left:15px;
 }
