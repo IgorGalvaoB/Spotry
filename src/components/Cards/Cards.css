@@ -37,22 +37,19 @@
 /*CSS DO ARTIST -> TITLE <- ----------------------------------*/
 .artist-title-link{
     font-size: 13px;
-    
-
 }
 
 /*CSS DO ARTIST CARD-------------------------------------------*/
 
 
 .artist img{
-  
     border-radius: 50%;
     width: 150px;
     height: 150px;
     object-fit: cover;
     align-self: center;
     margin: 10px 15px 0px 15px;
-    box-shadow: 0px 0px 7px 4px rgba(0,0,0,0.9)
+    box-shadow: rgba(19, 16, 16, 0.9)
 }
 .artist:hover{
     background-color: #282828;
@@ -73,3 +70,44 @@
     margin-left: 15px;
 }
 /*CSS DO ALBUM CARD--------------------------------------------------*/
+
+.container-albums {
+
+    padding: 10px;
+
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.album {
+ 
+    padding: 20px;
+    margin: 10px 0;
+    max-width: 200px;
+    box-sizing: border-box;
+    object-fit: cover;
+    align-self: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 10%;
+    
+}
+
+.album img {
+    object-fit: cover;
+    align-self: center;
+    width: 80%;
+}
+
+.album:hover{
+    background-color: #282828;
+    border-radius: 7px;
+}
+
+.album h3 {
+    margin: 8px;
+}
