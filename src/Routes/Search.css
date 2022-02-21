@@ -6,7 +6,40 @@
     display: flex;
     flex-direction: row;
   } */
-body {
-    background-color: #9c9c9c;
-    color:white;
+
+.container-artists{
+
+  display: flex;  
+  flex-wrap: wrap;
+  width: 90%;
+  align-self: stretch;
+  padding-left: 7.3%;
+  
+}
+.container-tracks{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 90%;
+  padding: 3px 5% 3px 5%
+}
+.albums-tracks-artists-link{
+  margin-left:5%;
+}
+.container-all{
+  padding-top:80px;
+  width: 100%;
+  background-color: #121212;
+  display:flex;
+  flex-direction: column;
+  
+}
+.container-album{
+
+  display: flex;  
+  flex-wrap: wrap;
+  width: 90%;
+  align-self: stretch;
+  padding-left: 7.3%;
+  
 }

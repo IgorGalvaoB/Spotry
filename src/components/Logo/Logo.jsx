@@ -7,6 +7,7 @@ export const Logo = () => {
     return (
 
         <>
+            {/*CONDICIONAL PARA O LOGO NÃO SER CLICÁVEL QUANDO ESTIVER NA PÁGINA DE LOGIN*/}
             {condition?<img src={logo} className='logo-spotry' alt="logo spotry" />:
                 <Link to='/me'>
                     <img src={logo} className='logo-spotry' alt="logo spotry" />

@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import Initial from './Routes/initialPage';
 import MainPage from './Routes/MainPage';
 import Search from './Routes/Search';
-
+import './App.css'
 
 
 
