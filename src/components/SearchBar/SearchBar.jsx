@@ -10,7 +10,7 @@ export const SearchBar = () => {
 
     }
     return (
-        <form onSubmit={handleSubmit}>
+        <form className='searchForm' onSubmit={handleSubmit}>
             <input
                 className='inputSearch  '
                 type="input"

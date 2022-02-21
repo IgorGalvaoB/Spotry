@@ -32,3 +32,32 @@
     color: #fff;
     font-size: 12px;
 }
+
+
+@media screen and (max-width: 620px){
+
+    .searchForm{
+        width: 95%;
+        margin: auto;
+        display: flex;
+        margin-bottom: 12px;
+    }
+    
+    .inputSearch {
+        border: none;
+        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+        width: 100%;
+        padding: 12px;
+    }
+
+
+    .inputSearchMain {
+        background-color: #414141;
+        border: none;
+        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+        color: #fff;
+        width: 90%;
+        padding: 8px;
+
+    }
+}
