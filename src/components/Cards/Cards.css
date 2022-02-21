@@ -74,6 +74,15 @@
 
 /*CSS DO ARTIST CARD-------------------------------------------*/
 
+<<<<<<< HEAD
+=======
+
+.container-artists {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+>>>>>>> f60f53b72fd8dd66f3bca2b40877f13510cec3e2
 .artist img{
     border-radius: 50%;
     width: 150px;
@@ -103,6 +112,9 @@
     margin-left: 15px;
 }
 /*CSS DO ALBUM CARD--------------------------------------------------*/
+<<<<<<< HEAD
+
+=======
 .album img{
   
     border-radius: 4px;
@@ -138,3 +150,4 @@
     margin-top: -10px;
     margin-left:15px;
 }
+>>>>>>> 7d9e4cbf7b9d3a007f8913924dd003197a33ec46
