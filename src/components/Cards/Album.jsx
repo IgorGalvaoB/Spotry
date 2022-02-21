@@ -2,7 +2,6 @@
 import { ArtistTitle } from "./ArtistTitle";
 
 export const Album = ({ artists, name, id, image }) => {
-  
   return (
     <div className="album">
       <img
@@ -14,5 +13,6 @@ export const Album = ({ artists, name, id, image }) => {
       <h4 className="album-name">{name}</h4>
       <ArtistTitle artists={artists}/>
     </div>
+    
   );
 };
