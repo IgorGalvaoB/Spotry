@@ -1,30 +1,75 @@
+/*CSS DO MUSIC CARD---------------------------------------------*/
+.image-music{
+    height:50px;
+}
+
+.info-music{
+    margin-left: 5%;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 .music {
     color: #fff;
     padding: 12px;
-    text-align: center;
-    width: 150px;
-
+    width: 98,5%;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    background-color: #121212;
+    margin:0px 10px 0px 10px;
+    border-radius:7px
 
 }
-
-.music > h3,
+.music h4{
+    margin:0px;
+    padding: 0px;
+}
 .music > p {
-    margin: 0
+    margin: 0;
+    padding:0
 }
-
-.music > h3 {
-    font-size: 16px;
-    margin: 5px 0;
-}
-
 .music:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
+    background-color: #2A2A2A;
+    border-radius: 7px;
 }
-.artist-title, .artist-title:active,.artist-title:after,.artist-title:focus {
-    font-size: 10px;
-    color: inherit;
+
+/*CSS DO ARTIST -> TITLE <- ----------------------------------*/
+.artist-title-link{
+    font-size: 13px;
+    
+
 }
+
+/*CSS DO ARTIST CARD-------------------------------------------*/
+
+
+.artist img{
+  
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    align-self: center;
+    margin: 10px 15px 0px 15px;
+    box-shadow: 0px 0px 7px 4px rgba(0,0,0,0.9)
+}
+.artist:hover{
+    background-color: #282828;
+    border-radius: 7px;
+}
+.artist{
+    background-color: #181818;
+    width:180px;
+    height: 260px;
+    border-radius: 7px;
+    margin:10px
+}
+.artist-name{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width:150px; 
+    margin-left: 15px;
+}
+/*CSS DO ALBUM CARD--------------------------------------------------*/
