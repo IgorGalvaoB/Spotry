@@ -136,7 +136,7 @@
     overflow: hidden;
     width:160px;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     margin-top: -10px;
     margin-left:15px;
