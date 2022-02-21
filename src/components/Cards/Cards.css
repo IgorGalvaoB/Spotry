@@ -66,13 +66,9 @@
 
 /*CSS DO ARTIST -> TITLE <- ----------------------------------*/
 .artist-title-link{
-<<<<<<< HEAD
     font-size: 0.8em;
     
 
-=======
-    font-size: 13px;
->>>>>>> cde215387340c2676073931fa43b47a80aa6e4f3
 }
 
 /*CSS DO ARTIST CARD-------------------------------------------*/
@@ -136,7 +132,7 @@
     overflow: hidden;
     width:160px;
     display: -webkit-box;
-    -webkit-line-clamp: 1;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     margin-top: -10px;
     margin-left:15px;
