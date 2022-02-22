@@ -1,9 +1,12 @@
 .inputSearch {
     border: none;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    border-radius: 18px;
     width: 390px;
-    padding: 4px;
+    padding: 10px;
 }
+
+
 
 .inputFormSearch {
     background-image: url('../../images/banner-bg.png');
@@ -21,6 +24,7 @@
     background-color: #414141;
     border: none;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    border-radius: 18px;
     color: #fff;
     width: 70%;
     padding: 4px;
