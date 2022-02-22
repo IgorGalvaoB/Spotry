@@ -44,3 +44,21 @@
   margin-left:11%;
 }
 /*PAGE ARTISTS-------------------------------------------------------------------------------------------------*/
+.artist-info-content{
+  display:flex;
+  flex-direction: row;
+  width: 80%;
+  margin-left: 10%;
+  height: 490px;
+}
+.artist-info-content img{
+  border-radius: 50%;
+  width: 350px;
+  height: 350px;
+  object-fit: cover;
+  align-self: center;
+  margin: 50px 100px 0px 100px;
+ 
+ 
+ 
+}

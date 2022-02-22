@@ -83,7 +83,7 @@ class APIRendler {
                         'Content-Type': 'application/json',
                     }
                 })
-            return [data.images,data.name]
+            return [data.images,data.name,data.followers.total,data.popularity,data]
         }catch(error){
             if(error.response.data.error.message === "The access token expired"){
                 this.refreshToken()
@@ -91,6 +91,38 @@ class APIRendler {
             }else{
                 throw Error ('Its a invalid token')
             }
+        }
+    }
+    async playMusic(id,type,position){
+
+        const data = JSON.stringify({
+            "context_uri": "spotify:album:5ht7ItJgpBH7W6vJ5BqpPr",
+            "offset": {
+              "position": 5
+            },
+            "position_ms": 0
+          });
+        try{
+            await axios.put('https://api.spotify.com/v1/me/player/play',{
+               
+                headers: {
+                    Accept: 'application/json',
+                    Authorization: 'Bearer ' + this.access_token,
+                    'Content-Type': 'application/json',
+                },
+                body:{
+                    "context_uri": "spotify:album:5ht7ItJgpBH7W6vJ5BqpPr",
+                    "offset": {
+                      "position": 5
+                    },
+                    "position_ms": 0
+                  }
+            })
+            
+          
+                
+        }catch(error){
+            console.log(console.log(error))
         }
     }
     refreshToken(){   
@@ -106,6 +138,7 @@ class APIRendler {
                 this.access_token=localStorage.getItem('access_token_spotry')
             }).catch(error=>{console.log(error)})
     }
+    async addPlayback(){}
 }
 
 

@@ -1,10 +1,15 @@
+
 import SpotifyPlayer from 'react-spotify-web-playback'
 import './Player.css'
-export const Player = () => {
+
+export const Player = ({id}) => {
+    
+
     return (
+        //useContext
         <div className='player'>
-        <SpotifyPlayer token='BQAx67Gsfa0bj71dx7hNyHIV5aJFFpQbDBZ3-kF5KTHtmdubwwCnon0GlQLX30GZ9zLESIdoeuQ-5pctH5JTwj073EqwIjVfh4_DUPXzaXIiKQj5bTqCfzNzqOm9Of86KU9XIAcOSQWpDlSTkoNhCylTlkQyYEORfffOKiAQApWEnd1B_4oCRaWyh0iN3g8'
-        uris={['spotify:album:5cnwEGGZCmPx1f3mLQK90b']}
+        <SpotifyPlayer token={localStorage.getItem("access_token_spotry")}
+        uris={[`spotify:album:5ht7ItJgpBH7W6vJ5BqpPr`]}
         styles={{
             activeColor: 'blue',
             bgColor:'rgb(32, 32, 32)',
@@ -14,9 +19,10 @@ export const Player = () => {
             trackArtistColor: 'white',
             trackNameColor: 'white',
             height:'70px'
-          }}
+
+          }}>
         
-        ></SpotifyPlayer>
+        </SpotifyPlayer>
         </div>
     )
 }
