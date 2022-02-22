@@ -93,6 +93,38 @@ class APIRendler {
             }
         }
     }
+    async playMusic(id,type,position){
+
+        const data = JSON.stringify({
+            "context_uri": "spotify:album:5ht7ItJgpBH7W6vJ5BqpPr",
+            "offset": {
+              "position": 5
+            },
+            "position_ms": 0
+          });
+        try{
+            await axios.put('https://api.spotify.com/v1/me/player/play',{
+               
+                headers: {
+                    Accept: 'application/json',
+                    Authorization: 'Bearer ' + this.access_token,
+                    'Content-Type': 'application/json',
+                },
+                body:{
+                    "context_uri": "spotify:album:5ht7ItJgpBH7W6vJ5BqpPr",
+                    "offset": {
+                      "position": 5
+                    },
+                    "position_ms": 0
+                  }
+            })
+            
+          
+                
+        }catch(error){
+            console.log(console.log(error))
+        }
+    }
     refreshToken(){   
         axios.get(
             'https://spotry-auth.herokuapp.com/refresh_token',{
@@ -106,6 +138,7 @@ class APIRendler {
                 this.access_token=localStorage.getItem('access_token_spotry')
             }).catch(error=>{console.log(error)})
     }
+    async addPlayback(){}
 }
 
 

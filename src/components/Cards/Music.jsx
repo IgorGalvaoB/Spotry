@@ -1,8 +1,16 @@
 //COMPONENTE QUE ORGANIZA A DEMONSTRAÇÃO DAS CARTAS DE MUSICA
 import { ArtistTitle } from './ArtistTitle'
+
 import './Cards.css'
 import play from '../../images/play-music.svg'
+import APIRendler from '../../Classes/apiRendler'
+
 export const Music = ({ name, image,id, artists ,duration_ms,index}) => {
+  const api = new APIRendler()
+  const playMusic =()=>{
+    api.playMusic()
+  }
+
   const msToTime =  (s)=> {
 
     // Pad to 2 or 3 digits, default is 2
@@ -16,13 +24,14 @@ export const Music = ({ name, image,id, artists ,duration_ms,index}) => {
     let secs = s % 60;
     s = (s - secs) / 60;
     let mins = s % 60;
-    
+    s = (s - mins)/60;
+    let hours = s %60;
   
-    return pad(mins) + ':' + pad(secs);
+    return hours?pad(hours) +':'+ pad(mins) + ':' + pad(secs):pad(mins) + ':' + pad(secs)
   }
   const time = msToTime(Number(duration_ms))
   return (
-    <div className="music">
+    <div onClick={playMusic} className="music">
       <div  className='music-index'>
         <h4>{index+1}</h4>
       </div>

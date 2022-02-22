@@ -7,6 +7,7 @@ import { Music } from "../components/Cards/Music";
 import { Artist } from "../components/Cards/Artist";
 import { Album } from "../components/Cards/Album";
 import Loading from '../images/loading.svg'
+
 const Search = () => {
 
     const [searchParams, setSearchParams] = useSearchParams()
@@ -75,6 +76,7 @@ const Search = () => {
             if(type === 'track') {
                 api.search(find, 50, 0, type, console.log).then(response => {
                     setTracks(response.tracks.items.map((track,index) => <Music name={track.name} image={track.album.images[2].url} year={track.album.release_date} key={track.id} id={track.id} artists={track.artists} duration_ms={track.duration_ms} index={index}/>))
+                    console.log(response.tracks.items)
                     setLoading(false)
                     setNot(true)
                 }).catch(error=>{
@@ -94,6 +96,7 @@ const Search = () => {
                 api.search(find,50,0,type,console.log).then(response=>{
                     setAlbums(response.albums.items.map(album=><Album name = {album.name} key= {album.id} id={album.id} image={album.images[0].url} artists={album.artists}/>))
                     setLoading(false)
+                
                     setNot(true)
                 }).catch(error=>{
                     console.log(error)
@@ -144,8 +147,9 @@ const Search = () => {
         <>
             <Navbar />
             {!loading&&container}
-            {loading&&<div style={{padding:'300px'}} className="loading"    ><h1>loading</h1></div>}
+            {loading&&<div style={{padding:'300px'}} className="loading"><h1>loading</h1></div>}
             {(not&&albums.length===0&&tracks.length===0&&artists.length===0)&&<div><h1>Nothing to show</h1></div>}
+         
         </>
         )
 }

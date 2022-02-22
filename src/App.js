@@ -1,10 +1,14 @@
-import { Route, Routes } from 'react-router-dom';
+
+import { Route, Routes} from 'react-router-dom';
 import Initial from './Routes/initialPage';
 import MainPage from './Routes/MainPage';
 import Search from './Routes/Search';
 import './App.css'
 import { Player } from './components/Player/Player';
 import ArtistPage from './Routes/ArtistPage';
+
+
+
 
 
 
@@ -16,16 +20,19 @@ localStorage.setItem('access_token_spotry',params.access_token) */
 //localStorage.getItem('refresh_token_spotry')
 
 function App() {
+  
   return (
     <div>
         
         <Routes>
+         
           <Route path='/' element = {<Initial/>}/>
-          <Route path='/me' element = {<MainPage/>}/>
+          <Route path= '/me' element = {<MainPage/>}/>
           <Route path='/search' element = {<Search/>}/>
           <Route path='/artist' element = {<ArtistPage/>}/>
         </Routes>
-        {/* <Player/> */}
+        {window.location.pathname!=='/'&&<Player/>}
+       
     </div>
   );
 }
