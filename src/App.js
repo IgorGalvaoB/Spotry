@@ -6,6 +6,7 @@ import Search from './Routes/Search';
 import './App.css'
 import { Player } from './components/Player/Player';
 import ArtistPage from './Routes/ArtistPage';
+import APIRendler from './Classes/apiRendler';
 
 
 
@@ -20,8 +21,16 @@ localStorage.setItem('access_token_spotry',params.access_token) */
 //localStorage.getItem('refresh_token_spotry')
 
 function App() {
-  
+  const api = new APIRendler()
+  const b = (data)=>{
+
+  setInterval(() => {
+    console.log(data)
+    }, 6000);
+  }
+ 
   return (
+
     <div>
         
         <Routes>
@@ -31,7 +40,7 @@ function App() {
           <Route path='/search' element = {<Search/>}/>
           <Route path='/artist' element = {<ArtistPage/>}/>
         </Routes>
-        {window.location.pathname!=='/'&&<Player/>}
+        {window.location.pathname!=='/'&&<Player callback={b}/>}
        
     </div>
   );

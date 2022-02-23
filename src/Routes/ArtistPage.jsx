@@ -26,22 +26,32 @@ const ArtistPage = () => {
     const [backGroundColor, setBackGroundColor] = useState('rgb(122,122,122)')
     const [followers, setFollowers] = useState('')
     const [popularity, setPopularity] = useState('');
+    const [loading, setLoading] = useState(true);
+    const [artistSingles,setArtistSingles] = useState('');
+    const [showSingles,setShowSingles] = useState(false);
+    const [showAlbums,setShowAlbums] = useState(false);
+    const load = (
+        <>
+            <Navbar/>
+            <h1 style={{marginTop:'200px'}}>loading ...</h1>
+        </>)
     //use effect---------------------------------------------------------
 
     useEffect(() => {
         const api = new APIRendler()
         const topTracksApi = api.topTracksArtist(id)
-        const artistAlbumsApi = api.artistAlbums(50, 0, id)
+        const artistAlbumsApi = api.artistAlbums(7, 0, id,'album')
         const apiArtist = api.artistImgName(id)
-
-        Promise.all([topTracksApi, artistAlbumsApi, apiArtist]).then(values => {
+        const artistApiSingle = api.artistAlbums(7, 0, id,'single')
+        Promise.all([topTracksApi, artistAlbumsApi, apiArtist,artistApiSingle]).then(values => {
             setTopTracks(values[0].tracks.map((track, index) => {
                 return <Music index={index} name={track.name} key={track.id} artists={track.artists} duration_ms={track.duration_ms} id={track.id} image={track.album.images[1].url} />
             }))
             setTopTracksShown(values[0].tracks.slice(0, 5).map((track, index) => {
                 return <Music index={index} name={track.name} key={track.id} artists={track.artists} duration_ms={track.duration_ms} id={track.id} image={track.album.images[1].url} />
             }))
-
+            setArtistSingles(values[3].items.map(album => {
+                return <Album name={album.name} key={album.id} id={album.id} image={album.images[0].url} artists={album.artists} />}))
             if (values[2][0].length >= 1) {
                 setImgArtist(values[2][0][0].url)
                 const fac = new FastAverageColor();
@@ -67,7 +77,7 @@ const ArtistPage = () => {
             setArtistAlbums(values[1].items.map(album => {
                 return <Album name={album.name} key={album.id} id={album.id} image={album.images[0].url} artists={album.artists} />
             }))
-
+            setLoading(false)
 
         })
 
@@ -82,27 +92,64 @@ const ArtistPage = () => {
             setTextShowMoreLess('Show more ...')
         }
     }
+
+    const toggleShowSingles=()=>{
+        if(showSingles === false&&artistSingles.length>=7){
+            const api = new APIRendler()
+            setShowSingles(true)
+            const artistApiSingle = api.artistAlbums(50, 0, id,'single').then(response=>{
+            setArtistSingles(response.items.map(album => {
+                return <Album name={album.name} key={album.id} id={album.id} image={album.images[0].url} artists={album.artists} />}))
+            })
+        }else{
+            setShowSingles(false)
+            setArtistSingles([...artistSingles].slice(0,7))
+        }
+    }
+    const toggleShowAlbums=()=>{
+        if(showAlbums === false&&artistAlbums.length>=7){
+            const api = new APIRendler()
+            setShowAlbums(true)
+            const artistApiSingle = api.artistAlbums(50, 0, id,'album').then(response=>{
+            setArtistAlbums(response.items.map(album => {
+                return <Album name={album.name} key={album.id} id={album.id} image={album.images[0].url} artists={album.artists} />}))
+            })
+        }else{
+            setShowAlbums(false)
+            setArtistAlbums([...artistAlbums].slice(0,7))
+        }
+    }
+
     //-----------------------background-color-analizer-------------------
-    return (
+    return loading?load:(
 
         <>
             <Navbar />
             <div className='artist-info-content' style={{ backgroundImage: `linear-gradient(to top,#121212,${backGroundColor}` }}>
                 <img src={imgArtist} />
                 <div>
-                    <h1 style={{ marginTop: '300px', marginBottom: '0px', paddingBottom: '0px', fontSize: '80px' }}>{artistName}</h1>
+                    <h1 style={{ marginTop: '300px', marginBottom: '0px', paddingBottom: '0px', fontSize: '5em' }}>{artistName}</h1>
                     <h3>Followers: {followers} • Popularity: {popularity}</h3>
                 </div>
             </div>
-            <div className="container-tracks">
+
+            {(!showAlbums&&!showSingles)&&<div className="container-tracks">
                 <h2>Popular</h2>
                 {topTracksShown}
                 {topTracksShown.length < 5 ? null : <h4 id='see-more-less' onClick={toggleShowTracks} style={{ cursor: 'pointer' }}>{textShowMoreLess}</h4>}
-            </div>
-            <h2 style={{ paddingLeft: '10%' }}>Albums</h2>
-            <div className="container-albums">
-                {artistAlbums}
-            </div>
+            </div>}
+            {!showSingles&&<div>
+                <h2 onClick={toggleShowAlbums}style={{ paddingLeft: '10%',cursor:'pointer' }}>{showAlbums?'Back':'Albums ...'}</h2>
+                <div className="container-albums">
+                    {artistAlbums}
+                </div>
+            </div>}
+            {!showAlbums&&<div>
+                <h2 onClick={toggleShowSingles}style={{ paddingLeft: '10%',cursor:'pointer' }}>{showSingles?'Back':'Singles ...'}</h2>
+                <div className="container-albums">
+                    {artistSingles}
+                </div>
+            </div>}
         </>
 
     )

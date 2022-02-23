@@ -30,11 +30,11 @@ class APIRendler {
         }
     }
 
-    async artistAlbums(limit,offset,id){
+    async artistAlbums(limit,offset,id,type){
         try {
             const {data}=await axios.get(
-                `${this.url}/artists/${id}/albums`,{
-                    params:{q: 'include_groups=album,single', limit:limit,offset:offset},
+                `${this.url}/artists/${id}/albums?include_groups=${type}`,{
+                    params:{limit:limit,offset:offset},
                     headers: {
                         Accept: 'application/json',
                         Authorization: 'Bearer ' + this.access_token,
@@ -104,23 +104,20 @@ class APIRendler {
           });
         try{
             await axios.put('https://api.spotify.com/v1/me/player/play',{
+                "context_uri": "spotify:album:5ht7ItJgpBH7W6vJ5BqpPr",
+                "offset": {
+                  "position": 5
+                },
+                "position_ms": 0
+              },{
                
                 headers: {
                     Accept: 'application/json',
                     Authorization: 'Bearer ' + this.access_token,
                     'Content-Type': 'application/json',
                 },
-                body:{
-                    "context_uri": "spotify:album:5ht7ItJgpBH7W6vJ5BqpPr",
-                    "offset": {
-                      "position": 5
-                    },
-                    "position_ms": 0
-                  }
+              
             })
-            
-          
-                
         }catch(error){
             console.log(console.log(error))
         }
@@ -138,7 +135,26 @@ class APIRendler {
                 this.access_token=localStorage.getItem('access_token_spotry')
             }).catch(error=>{console.log(error)})
     }
-    async addPlayback(){}
+    async recentlyPlayed(id){
+        try{
+            const {data}=await axios.get(
+                `${this.url}/me/player/recently-played`,{
+                    headers: {
+                        Accept: 'application/json',
+                        Authorization: 'Bearer ' + this.access_token,
+                        'Content-Type': 'application/json',
+                    }
+                })
+            return data
+        }catch(error){
+            if(error.response.data.error.message === "The access token expired"){
+                this.refreshToken()
+                this.topTracksArtist(id)
+            }else{
+                throw Error ('Its a invalid token')
+            }
+        }
+    }
 }
 
 
