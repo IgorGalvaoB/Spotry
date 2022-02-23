@@ -2,9 +2,9 @@
 import SpotifyPlayer from 'react-spotify-web-playback'
 import './Player.css'
 
-export const Player = ({id}) => {
+export const Player = ({id,callback}) => {
     
-
+  
     return (
         //useContext
         <div className='player'>
@@ -20,7 +20,9 @@ export const Player = ({id}) => {
             trackNameColor: 'white',
             height:'70px'
 
-          }}>
+          }}
+        callback={callback}
+          >
         
         </SpotifyPlayer>
         </div>
