@@ -6,14 +6,14 @@ export const ArtistTitle = ({ artists }) => {
     let arrTitle = artists.map((artist, index, arr) => {
         if (arr.length === 1 || index === arr.length - 1) {
             return (
-                <Link style={{textDecoration:'none',color:'inherit'}} to={{ pathname: `/artist/?id=${artist.id}` }} key={artist.id} className='artist-title'>{/*LINK QUE LEVA PARA A PÁGINA DO ARTISTA*/}
+                <Link className='link' style={{textDecoration:'none',color:'inherit'}} to={{ pathname: `/artist/?id=${artist.id}` }} key={artist.id} className='artist-title'>{/*LINK QUE LEVA PARA A PÁGINA DO ARTISTA*/}
                     {artist.name}
                 </Link>
             )
         } else {
             return (
                 <>
-                    <Link  style={{textDecoration:'none',color:'inherit'}}to={{ pathname: `/artist/?id=${artist.id}` }} key={artist.id}  className='artist-title'>{/*LINK QUE LEVA PARA A PÁGINA DO ARTISTA*/}
+                    <Link className='link' style={{textDecoration:'none',color:'inherit'}}to={{ pathname: `/artist/?id=${artist.id}` }} key={artist.id}  className='artist-title'>{/*LINK QUE LEVA PARA A PÁGINA DO ARTISTA*/}
                         {artist.name}
                     </Link>
                     <span>, </span>
