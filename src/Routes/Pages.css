@@ -13,7 +13,7 @@
   flex-wrap: wrap;
   width: 80%;
   margin-bottom: 60px;
-  margin-left:11%;
+  margin-left:13%;
   
 }
 .container-tracks{
@@ -29,7 +29,7 @@
   margin-left:10%;
 }
 .container-all{
-  padding-top:3%;
+  padding-top:50px;
   width: 100%;
   background-color: #121212;
   display:flex;
@@ -40,8 +40,8 @@
   display: flex;  
   flex-wrap: wrap;
   width: 80%;
-  margin-bottom: 60px;
-  margin-left:11%;
+  margin-bottom: 90px;
+  margin-left:13%;
 }
 /*PAGE ARTISTS-------------------------------------------------------------------------------------------------*/
 .artist-info-content{
@@ -49,7 +49,7 @@
   flex-direction: row;
   width: 80%;
   margin-left: 10%;
-  height: 490px;
+  height: 440px;
 }
 .artist-info-content img{
   border-radius: 50%;
@@ -57,8 +57,36 @@
   height: 350px;
   object-fit: cover;
   align-self: center;
-  margin: 50px 100px 0px 100px;
+  margin: 30px 100px 0px 100px;
  
+}
+/*PAGE ALBUMS----------------------------------------------------------------------------------------------------*/
+.album-info-content{
+  display:flex;
+  flex-direction: row;
+  width: 74.5%;
+  margin-left: 12.7%;
+  height: 440px;
+}
+.album-info-content img{
+  
+  width: 350px;
+  height: 350px;
+  object-fit: cover;
+  align-self: center;
+  margin: 0px 0px 0px 50px;
  
- 
+}
+.album-name{
+  padding-top: 100px;
+  padding-left:35px;
+}
+.album-name h1{
+  margin:0px;
+}
+.container-album-tracks{
+  width:74.5%;
+  margin-left: 12.7%;
+  margin-top: 20px;
+  margin-bottom: 90px;
 }

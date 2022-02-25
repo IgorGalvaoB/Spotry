@@ -9,7 +9,7 @@ import './Pages.css'
 import FastAverageColor from 'fast-average-color';
 
 
-const ArtistPage = () => {
+const ArtistPage = ({ func_player }) => {
     function numberWithCommas(x) {
         return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ".");
     }
@@ -30,14 +30,11 @@ const ArtistPage = () => {
     const [artistSingles,setArtistSingles] = useState('');
     const [showSingles,setShowSingles] = useState(false);
     const [showAlbums,setShowAlbums] = useState(false);
-    const load = (
-        <>
-            <Navbar/>
-            <h1 style={{marginTop:'200px'}}>loading ...</h1>
-        </>)
+    
     //use effect---------------------------------------------------------
 
     useEffect(() => {
+        setLoading(true)
         const api = new APIRendler()
         const topTracksApi = api.topTracksArtist(id)
         const artistAlbumsApi = api.artistAlbums(7, 0, id,'album')
@@ -45,10 +42,10 @@ const ArtistPage = () => {
         const artistApiSingle = api.artistAlbums(7, 0, id,'single')
         Promise.all([topTracksApi, artistAlbumsApi, apiArtist,artistApiSingle]).then(values => {
             setTopTracks(values[0].tracks.map((track, index) => {
-                return <Music index={index} name={track.name} key={track.id} artists={track.artists} duration_ms={track.duration_ms} id={track.id} image={track.album.images[1].url} />
+                return <Music func_player={func_player} index={index} name={track.name} key={track.id} artists={track.artists} duration_ms={track.duration_ms} id={track.id} image={track.album.images[1].url} />
             }))
             setTopTracksShown(values[0].tracks.slice(0, 5).map((track, index) => {
-                return <Music index={index} name={track.name} key={track.id} artists={track.artists} duration_ms={track.duration_ms} id={track.id} image={track.album.images[1].url} />
+                return <Music func_player={func_player} index={index} name={track.name} key={track.id} artists={track.artists} duration_ms={track.duration_ms} id={track.id} image={track.album.images[1].url} />
             }))
             setArtistSingles(values[3].items.map(album => {
                 return <Album name={album.name} key={album.id} id={album.id} image={album.images[0].url} artists={album.artists} />}))
@@ -57,9 +54,7 @@ const ArtistPage = () => {
                 const fac = new FastAverageColor();
 
                 fac.getColorAsync(values[2][0][0].url, {
-                    ignoredColor: [255, 255, 255, 255],
-                    ignoredColor: [0, 0, 0, 255],
-                    ignoredColor: [18, 18, 18, 255]
+                    ignoredColor: [[255, 255, 255, 255],[0, 0, 0, 255],[18, 18, 18, 255]]
 
                 }).then(color => {
                     setBackGroundColor(color.rgb)
@@ -112,7 +107,9 @@ const ArtistPage = () => {
             setShowAlbums(true)
             const artistApiSingle = api.artistAlbums(50, 0, id,'album').then(response=>{
             setArtistAlbums(response.items.map(album => {
+                console.log(album)
                 return <Album name={album.name} key={album.id} id={album.id} image={album.images[0].url} artists={album.artists} />}))
+                
             })
         }else{
             setShowAlbums(false)
@@ -121,14 +118,14 @@ const ArtistPage = () => {
     }
 
     //-----------------------background-color-analizer-------------------
-    return loading?load:(
+    return (
 
-        <>
-            <Navbar />
+        <div>
+            {!loading&&<div style={{padding:'63px'}}>
             <div className='artist-info-content' style={{ backgroundImage: `linear-gradient(to top,#121212,${backGroundColor}` }}>
                 <img src={imgArtist} />
                 <div>
-                    <h1 style={{ marginTop: '300px', marginBottom: '0px', paddingBottom: '0px', fontSize: '5em' }}>{artistName}</h1>
+                    <h1 style={{ marginTop: '180px', marginBottom: '0px', paddingBottom: '0px', fontSize: '4em' }}>{artistName}</h1>
                     <h3>Followers: {followers} • Popularity: {popularity}</h3>
                 </div>
             </div>
@@ -138,19 +135,20 @@ const ArtistPage = () => {
                 {topTracksShown}
                 {topTracksShown.length < 5 ? null : <h4 id='see-more-less' onClick={toggleShowTracks} style={{ cursor: 'pointer' }}>{textShowMoreLess}</h4>}
             </div>}
-            {!showSingles&&<div>
+            {!showSingles&&<div >
                 <h2 onClick={toggleShowAlbums}style={{ paddingLeft: '10%',cursor:'pointer' }}>{showAlbums?'Back':'Albums ...'}</h2>
                 <div className="container-albums">
                     {artistAlbums}
                 </div>
             </div>}
             {!showAlbums&&<div>
-                <h2 onClick={toggleShowSingles}style={{ paddingLeft: '10%',cursor:'pointer' }}>{showSingles?'Back':'Singles ...'}</h2>
+                {artistSingles.length===0?null:<h2 onClick={toggleShowSingles}style={{ paddingLeft: '10%',cursor:'pointer' }}>{showSingles?'Back':'Singles ...'}</h2>}
                 <div className="container-albums">
                     {artistSingles}
                 </div>
             </div>}
-        </>
+            </div>}
+        </div>
 
     )
 }

@@ -15,7 +15,7 @@ export const Navbar = () => {
       <div className="headerContainer">
         <div className="headerContainer__a">
           <Logo />
-          {!conditionTwo&&<ButtonPlaylist />}{/*CONDICIONAL PARA NÃO EXIBIR O BOTÃO DE PLAYLIST NA PÁGINA DE LOGIN*/}
+          {/*CONDICIONAL PARA NÃO EXIBIR O BOTÃO DE PLAYLIST NA PÁGINA DE LOGIN*/}
         </div>
         {!conditionThree&&<SearchBar />}{/*CONDICIONAL PARA NÃO EXIBIR A BARRA DE SEARCH NA PÁGINA DE LOGIN NEM NA PAGINA MAIN (/ME)*/}
         <div className="headerContainer__b">

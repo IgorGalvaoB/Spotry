@@ -2,14 +2,16 @@
 import SpotifyPlayer from 'react-spotify-web-playback'
 import './Player.css'
 
-export const Player = ({id,callback}) => {
+export const Player = ({player}) => {
     
-  
+    
     return (
         //useContext
         <div className='player'>
         <SpotifyPlayer token={localStorage.getItem("access_token_spotry")}
-        uris={[`spotify:album:5ht7ItJgpBH7W6vJ5BqpPr`]}
+        play= {true}
+        autoPlay = {true}
+        uris = {player}
         styles={{
             activeColor: 'blue',
             bgColor:'rgb(32, 32, 32)',
@@ -21,7 +23,7 @@ export const Player = ({id,callback}) => {
             height:'70px'
 
           }}
-        callback={callback}
+        
           >
         
         </SpotifyPlayer>

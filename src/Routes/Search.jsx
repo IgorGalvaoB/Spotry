@@ -1,6 +1,6 @@
 import { Link, useSearchParams } from "react-router-dom";
 import './Pages.css'
-import { Navbar } from "../components/Navbar/Navbar";
+
 import { useEffect, useState } from "react";
 import APIRendler from "../Classes/apiRendler";
 import { Music } from "../components/Cards/Music";
@@ -8,7 +8,7 @@ import { Artist } from "../components/Cards/Artist";
 import { Album } from "../components/Cards/Album";
 import Loading from '../images/loading.svg'
 
-const Search = () => {
+const Search = ({ func_player }) => {
 
     const [searchParams, setSearchParams] = useSearchParams()
     const find = searchParams.get('q')
@@ -42,13 +42,13 @@ const Search = () => {
         setNot(false)
         const api = new APIRendler()
         if (!type) {
-            api.search(find, 8, 0, 'artist,track,album', console.log).then(response => {
+            api.search(find, 7, 0, 'artist,track,album', console.log).then(response => {
                 //tracks
 
                 if (response.tracks.length === 0) {
                     setTracks('')
                 } else {
-                    setTracks(response.tracks.items.slice(0, 5).map((track,index) => <Music name={track.name} image={track.album.images[2].url} year={track.album.release_date} key={track.id} id={track.id} artists={track.artists} duration_ms={track.duration_ms} index={index} />))
+                    setTracks(response.tracks.items.slice(0, 5).map((track,index) => <Music func_player={func_player} name={track.name} image={track.album.images[2].url} year={track.album.release_date} key={track.id} id={track.id} artists={track.artists} duration_ms={track.duration_ms} index={index} />))
                 }
                  
                 //albums
@@ -75,7 +75,7 @@ const Search = () => {
         } else{
             if(type === 'track') {
                 api.search(find, 50, 0, type, console.log).then(response => {
-                    setTracks(response.tracks.items.map((track,index) => <Music name={track.name} image={track.album.images[2].url} year={track.album.release_date} key={track.id} id={track.id} artists={track.artists} duration_ms={track.duration_ms} index={index}/>))
+                    setTracks(response.tracks.items.map((track,index) => <Music func_player={func_player} name={track.name} image={track.album.images[2].url} year={track.album.release_date} key={track.id} id={track.id} artists={track.artists} duration_ms={track.duration_ms} index={index}/>))
                     console.log(response.tracks.items)
                     setLoading(false)
                     setNot(true)
@@ -119,6 +119,7 @@ const Search = () => {
                 <div className="container-tracks">
                     {tracks}
                 </div>
+                
             </div>}
 
            
@@ -145,7 +146,7 @@ const Search = () => {
 
     return (
         <>
-            <Navbar />
+            
             {!loading&&container}
             {loading&&<div style={{padding:'300px'}} className="loading"><h1>loading</h1></div>}
             {(not&&albums.length===0&&tracks.length===0&&artists.length===0)&&<div><h1>Nothing to show</h1></div>}

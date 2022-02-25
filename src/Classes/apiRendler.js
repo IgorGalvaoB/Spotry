@@ -6,8 +6,8 @@ class APIRendler {
         this.url = 'https://api.spotify.com/v1';
     } 
 
-   
-    async search(qString,limit,offset,type,callback){
+
+    async search(qString,limit,offset,type){
         try {
             const { data } = await axios.get(
                 `${this.url}/search?&type=${type}&include_external=audio`, {
@@ -23,7 +23,7 @@ class APIRendler {
         } catch (error) {
             if(error.response.data.error.message === "The access token expired"){
                 this.refreshToken()
-                this.search(qString,limit,offset,type,callback)
+                this.search(qString,limit,offset,type)
             }else{
                 throw Error ('Its a invalid token')
             }
@@ -34,7 +34,7 @@ class APIRendler {
         try {
             const {data}=await axios.get(
                 `${this.url}/artists/${id}/albums?include_groups=${type}`,{
-                    params:{limit:limit,offset:offset},
+                    params:{limit:limit,offset:offset,market:'BR'},
                     headers: {
                         Accept: 'application/json',
                         Authorization: 'Bearer ' + this.access_token,
@@ -93,23 +93,25 @@ class APIRendler {
             }
         }
     }
-    async playMusic(id,type,position){
+     async playMusic(id,position){
 
         const data = JSON.stringify({
-            "context_uri": "spotify:album:5ht7ItJgpBH7W6vJ5BqpPr",
+            "context_uri": `spotify:album:${id}`,
             "offset": {
-              "position": 5
+              "position": {position}
             },
             "position_ms": 0
           });
+        
         try{
             await axios.put('https://api.spotify.com/v1/me/player/play',{
-                "context_uri": "spotify:album:5ht7ItJgpBH7W6vJ5BqpPr",
+                "context_uri": `spotify:album:${id}`,
                 "offset": {
-                  "position": 5
+                  "position": position
                 },
                 "position_ms": 0
-              },{
+              },
+            {
                
                 headers: {
                     Accept: 'application/json',
@@ -121,7 +123,28 @@ class APIRendler {
         }catch(error){
             console.log(console.log(error))
         }
+    } 
+    async album(id){
+        try{
+            const {data}=await axios.get(
+                `${this.url}/albums/${id}`,{
+                    headers: {
+                        Accept: 'application/json',
+                        Authorization: 'Bearer ' + this.access_token,
+                        'Content-Type': 'application/json',
+                    }
+                })
+            return data
+        }catch(error){
+            if(error.response.data.error.message === "The access token expired"){
+                this.refreshToken()
+                this.albums(id)
+            }else{
+                throw Error ('Its a invalid token')
+            }
+        }
     }
+    
     refreshToken(){   
         axios.get(
             'https://spotry-auth.herokuapp.com/refresh_token',{
@@ -135,7 +158,20 @@ class APIRendler {
                 this.access_token=localStorage.getItem('access_token_spotry')
             }).catch(error=>{console.log(error)})
     }
-    async recentlyPlayed(id){
+    async addTrack(id){
+        try{
+            axios.post(`${this.url}/me/player/queue?uri=spotify:track:${id}`,{},{
+            headers:{
+                Accept: 'application/json',
+                Authorization: 'Bearer ' + this.access_token,
+                'Content-Type': 'application/json',
+            }})
+        }catch(error){
+            console.log(error)
+        }
+
+    }
+    async recentlyPlayed(){
         try{
             const {data}=await axios.get(
                 `${this.url}/me/player/recently-played`,{
@@ -149,7 +185,7 @@ class APIRendler {
         }catch(error){
             if(error.response.data.error.message === "The access token expired"){
                 this.refreshToken()
-                this.topTracksArtist(id)
+                this.topTracksArtist()
             }else{
                 throw Error ('Its a invalid token')
             }
