@@ -1,5 +1,5 @@
 import { Navbar } from "../components/Navbar/Navbar";
-
+import { useEffect } from "react";
 import { SearchBarMain } from "../components/SearchBar/SearchBar"
 
 
@@ -12,7 +12,7 @@ const MainPage = ()=>{
         localStorage.setItem('refresh_token_spotry',params.refresh_token)
         localStorage.setItem('access_token_spotry',params.access_token)
     }
-    console.log(params.access_token)
+    
     
     //localStorage.getItem('refresh_token_spotry')
     return(

@@ -1,4 +1,3 @@
-
 import { Route, Routes} from 'react-router-dom';
 import Initial from './Routes/initialPage';
 import MainPage from './Routes/MainPage';
@@ -7,6 +6,10 @@ import './App.css'
 import { Player } from './components/Player/Player';
 import ArtistPage from './Routes/ArtistPage';
 import APIRendler from './Classes/apiRendler';
+import{ useState } from 'react';
+import { AlbumPage } from './Routes/AlbumPage';
+import { Navbar } from './components/Navbar/Navbar';
+
 
 
 
@@ -21,26 +24,25 @@ localStorage.setItem('access_token_spotry',params.access_token) */
 //localStorage.getItem('refresh_token_spotry')
 
 function App() {
-  const api = new APIRendler()
-  const b = (data)=>{
-
-  setInterval(() => {
-    console.log(data)
-    }, 6000);
+  const [playback, setPlayback] = useState(''); 
+  const [player,setPlayer] = useState(['spotify:track:4iV5W9uYEdYUVa79Axb7Rh'])
+  
+  const setPlay=(state)=>{
+    setPlayer(state)
+    console.log(state)
   }
- 
   return (
 
     <div>
-        
+        <Navbar/>
         <Routes>
-         
           <Route path='/' element = {<Initial/>}/>
           <Route path= '/me' element = {<MainPage/>}/>
-          <Route path='/search' element = {<Search/>}/>
-          <Route path='/artist' element = {<ArtistPage/>}/>
+          <Route path='/search' element = {<Search func_player={setPlay}/>}/>
+          <Route path='/artist' element = {<ArtistPage func_player={setPlay}/>}/>
+          <Route path='/album' element = {<AlbumPage func_player={setPlay}/>}/>
         </Routes>
-        {window.location.pathname!=='/'&&<Player callback={b}/>}
+        {window.location.pathname!=='/'&&<Player player={player}/>}
        
     </div>
   );
