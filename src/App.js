@@ -25,7 +25,7 @@ localStorage.setItem('access_token_spotry',params.access_token) */
 
 function App() {
   const [playback, setPlayback] = useState(''); 
-  const [player,setPlayer] = useState(['spotify:track:4iV5W9uYEdYUVa79Axb7Rh'])
+  const [player,setPlayer] = useState([])
   
   const setPlay=(state)=>{
     setPlayer(state)
@@ -34,7 +34,7 @@ function App() {
   return (
 
     <div>
-        <Navbar/>
+       
         <Routes>
           <Route path='/' element = {<Initial/>}/>
           <Route path= '/me' element = {<MainPage/>}/>
