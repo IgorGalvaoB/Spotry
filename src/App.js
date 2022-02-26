@@ -34,7 +34,7 @@ function App() {
   return (
 
     <div>
-        <Navbar/>
+       
         <Routes>
           <Route path='/' element = {<Initial/>}/>
           <Route path= '/me' element = {<MainPage/>}/>
