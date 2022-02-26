@@ -121,6 +121,7 @@ const ArtistPage = ({ func_player }) => {
     return (
 
         <div>
+            <Navbar/>
             {!loading&&<div style={{padding:'63px'}}>
             <div className='artist-info-content' style={{ backgroundImage: `linear-gradient(to top,#121212,${backGroundColor}` }}>
                 <img src={imgArtist} />

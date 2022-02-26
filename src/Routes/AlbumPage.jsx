@@ -52,7 +52,7 @@ export const AlbumPage = ({ func_player }) => {
     
     return (
         <>
-            
+            <Navbar/>
             <div style={{paddingTop:'63px',width:'100%'}}>
                 <div className="album-info-content" style={{ backgroundImage: `linear-gradient(to left,#121212,${backGroundColor}`  }}>
                     <img src={image}></img>

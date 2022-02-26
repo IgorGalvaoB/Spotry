@@ -7,6 +7,7 @@ import { Music } from "../components/Cards/Music";
 import { Artist } from "../components/Cards/Artist";
 import { Album } from "../components/Cards/Album";
 import Loading from '../images/loading.svg'
+import { Navbar } from "../components/Navbar/Navbar";
 
 const Search = ({ func_player }) => {
 
@@ -145,7 +146,7 @@ const Search = ({ func_player }) => {
         )
 
     return (
-        <>
+        <>  <Navbar/>
             
             {!loading&&container}
             {loading&&<div style={{padding:'300px'}} className="loading"><h1>loading</h1></div>}
