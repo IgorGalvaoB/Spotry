@@ -10,7 +10,7 @@ class APIRendler {
     async search(qString,limit,offset,type){
         try {
             const { data } = await axios.get(
-                `${this.url}/search?&type=${type}&include_external=audio`, {
+                `${this.url}/search?&type=${type}`, {
                     params: { q: qString , limit: limit, offset: offset },
                     headers: {
                         Accept: 'application/json',
@@ -196,4 +196,3 @@ class APIRendler {
 
 
 export default APIRendler
-//BQDafh9umQwmCt16iB0gRcEseRs8bmtrNr59Pe0GrPGWADtrTrIFp-gMDleclOURf60qp1sRwG-XIM_0BRrzlNeux4NSr_w2khEmBKYd6xYBkTxLyNfLI-nGrfrLFPD38yd9dwdmmtQI5dZBmL7UxWVeEaop0uNeRhtMItKiRGlzsOoYUpV317iKEuMiZ3X6JnlIJVPuaB-RugIUx2VmmE7e6HNGeOXJtz3WPsEnTThJPQsAK1jirYfbwxMJC3AECQ
